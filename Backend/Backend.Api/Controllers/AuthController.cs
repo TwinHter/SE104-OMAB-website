@@ -130,6 +130,30 @@ namespace Backend.Api.Controllers
         {
             return Ok(new { message = "Logged out successfully" });
         }
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequestDto request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { message = "Invalid request payload." });
+            }
+
+            try
+            {
+                var result = await _authService.ChangePassword(request.UserId, request.CurrentPassword, request.NewPassword);
+                if (!result)
+                {
+                    return BadRequest(new { message = "Error changing password." });
+                }
+
+                return Ok(new { message = "Password changed successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error during password change", error = ex.Message });
+            }
+        }
     }
 
+    // change password endpoint
 }

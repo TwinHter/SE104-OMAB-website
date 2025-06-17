@@ -22,6 +22,7 @@ import StatisticsPage from "./pages/common/StatisticsPage";
 import AdminDoctorManagementPage from "./pages/admin/AdminDoctorManagementPage";
 import NotFoundPage from "./pages/common/NotFoundPage";
 import DoctorReviewsPage from "./pages/doctors/DoctorReviewPage";
+import ChangePasswordPage from "./components/auth/ChangePasswordPage";
 
 function AppContent() {
     return (
@@ -33,6 +34,10 @@ function AppContent() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
+                    <Route
+                        path="/change-password"
+                        element={<ChangePasswordPage />}
+                    />
                     <Route path="/doctors" element={<DoctorListPage />} />
 
                     {/* Protected Routes - Yêu cầu đăng nhập */}

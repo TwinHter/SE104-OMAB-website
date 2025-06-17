@@ -32,6 +32,22 @@ namespace Backend.Api.DTOs
         public UserRole Role { get; set; }
     }
 
+    public class ChangePasswordRequestDto
+    {
+        [Required(ErrorMessage = "User ID is required.")]
+        public string UserId { get; set; } // Cần biết người dùng nào muốn đổi mật khẩu
+
+        [Required(ErrorMessage = "Current password is required.")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters long.")]
+        public string CurrentPassword { get; set; }
+
+        [Required(ErrorMessage = "New password is required.")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "New password must be at least 6 characters long.")]
+        public string NewPassword { get; set; }
+
+        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        public string ConfirmNewPassword { get; set; }
+    }
     // For User response (Login, Register, Get User)
     public class UserDto
     {

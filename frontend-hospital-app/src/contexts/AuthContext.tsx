@@ -1,7 +1,7 @@
 // src/contexts/AuthContext.tsx
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { User, LoginData, RegisterData } from "../types";
-import { useLogin, useRegister } from "../hooks/useAuth"; // Giả sử hooks này đã có (hooks API)
+import { useChangePassword, useLogin, useRegister } from "../hooks/useAuth"; // Giả sử hooks này đã có (hooks API)
 
 // Định nghĩa AuthContextType ở đây hoặc trong types.ts
 interface AuthContextType {
@@ -9,6 +9,11 @@ interface AuthContextType {
     login: (credentials: LoginData) => Promise<User>;
     register: (userData: RegisterData) => Promise<User>;
     logout: () => void;
+    changePassword?: (
+        userId: string,
+        currentPassword: string,
+        newPassword: string
+    ) => Promise<void>; // Thêm changePassword nếu cần
     isLoadingAuth: boolean;
     authError: Error | null;
 }
@@ -68,6 +73,27 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         localStorage.removeItem("currentUser");
     };
 
+    const changePassword = async (
+        userId: string,
+        currentPassword: string,
+        newPassword: string
+    ) => {
+        try {
+            // Giả sử bạn đã có hook useChangePassword
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const changePasswordMutation = useChangePassword();
+            await changePasswordMutation.mutateAsync({
+                userId,
+                currentPassword,
+                newPassword,
+            });
+            console.log("Password changed successfully");
+        } catch (error) {
+            console.error("Change password failed in context:", error);
+            throw error;
+        }
+    };
+
     const isLoadingAuth = loginMutation.isPending || registerMutation.isPending;
     const authError = loginMutation.error || registerMutation.error;
 
@@ -76,6 +102,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         login,
         register,
         logout,
+        changePassword,
         isLoadingAuth,
         authError,
     };

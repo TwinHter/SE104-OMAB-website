@@ -132,6 +132,16 @@ const Sidebar: React.FC = () => {
                 >
                     Đăng xuất
                 </Button>
+                <Link to="/change-password" className="w-full block mt-2">
+                    <Button
+                        variant="danger"
+                        size="md"
+                        icon={faSignOutAlt}
+                        className="w-full"
+                    >
+                        Đổi Mật khẩu
+                    </Button>
+                </Link>
             </div>
         </aside>
     );

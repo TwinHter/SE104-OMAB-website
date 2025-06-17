@@ -56,7 +56,7 @@ const DoctorSchedulePage: React.FC = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const next7Days = useMemo(() => {
         const today = new Date();
-        const endDate = addDays(today, 6);
+        const endDate = addDays(today, 30);
         return eachDayOfInterval({ start: today, end: endDate });
     }, []);
 
@@ -105,7 +105,7 @@ const DoctorSchedulePage: React.FC = () => {
         }
         const currentSlots = doctor.availability[date] || [];
         const updatedSlots = currentSlots.filter(
-            (time) => time !== timeToRemove
+            (time) => time === timeToRemove
         );
         await updateAvailabilityMutation.mutateAsync({
             doctorId: doctor.id,

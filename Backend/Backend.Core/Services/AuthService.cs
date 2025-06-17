@@ -39,5 +39,24 @@ namespace Backend.Core.Services
             await _userRepository.AddAsync(user);
             return user;
         }
+
+        public async Task<bool> ChangePassword(string userId, string currentPassword, string newPassword)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+            if (user == null)
+                return false;
+
+            // Giả lập kiểm tra mật khẩu hiện tại (nếu bạn dùng hash thực, sẽ dùng PasswordHasher)
+            if (user.PasswordHash != currentPassword) // Giả định PasswordHash = plain text
+                return false;
+
+            // Cập nhật mật khẩu mới
+            user.PasswordHash = newPassword;
+            user.Salt = Guid.NewGuid().ToString(); // Giả lập tạo salt mới
+
+            await _userRepository.UpdateAsync(user);
+            return true;
+        }
+
     }
 }

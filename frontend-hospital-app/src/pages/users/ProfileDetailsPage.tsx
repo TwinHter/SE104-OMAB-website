@@ -2,12 +2,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useUserById, useUpdateUser } from "../../hooks/useUsers";
-import { UserRole, User, Doctor, Relative, UpdateUserData } from "../../types";
+import { UserRole, User, Doctor, UpdateUserData } from "../../types";
 import {
     faPhone,
     faEdit,
     faHeartbeat,
-    faUsers,
     faBirthdayCake,
     faVenusMars,
     faMapMarkerAlt,
@@ -491,13 +490,13 @@ const ProfileDetailsPage: React.FC = () => {
                                     "Chưa cập nhật"}
                             </p>
 
-                            <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-3 flex items-center">
+                            {/* <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-3 flex items-center">
                                 <FontAwesomeIcon
                                     icon={faUsers}
                                     className="mr-2 text-primary"
                                 />{" "}
                                 Người thân
-                            </h4>
+                            </h4> */}
                             {/* {(user as User).relatives &&
                             (user as User).relatives!.length > 0 ? (
                                 <ul className="space-y-3">

@@ -291,3 +291,10 @@ export interface DoctorStatisticsOverview {
     total_Appointments: number;
     total_Reviews: number; // Cần tính từ `reviews.length`
 }
+
+export interface ChangePasswordData {
+    userId: string; // ID của người dùng cần đổi mật khẩu
+    currentPassword: string; // Mật khẩu hiện tại
+    newPassword: string; // Mật khẩu mới
+    confirmNewPassword: string; // Xác nhận mật khẩu mới
+}

@@ -51,6 +51,38 @@ export const useRegister = () => {
 };
 
 // NEW: Hook for Logout
+export const useChangePassword = () => {
+    const queryClient = useQueryClient();
+    return useMutation<
+        unknown,
+        Error,
+        { userId: string; currentPassword: string; newPassword: string }
+    >({
+        mutationFn: async ({ userId, currentPassword, newPassword }) => {
+            const response = await axiosClient.post("/auth/change-password", {
+                userId,
+                currentPassword,
+                newPassword,
+                confirmNewPassword: newPassword, // Assuming backend requires this field
+            });
+            return response.data; // This will be { message: "Password changed successfully" }
+        },
+        onSuccess: () => {
+            console.log("Password changed successfully from backend API.");
+            // Optionally, you can clear the user session or redirect
+            // For example, you might want to log out the user after changing password
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+            queryClient.clear(); // Clear all queries if needed
+            window.location.href = "/login"; // Redirect to login page
+        },
+        onError: (error) => {
+            console.error("Change password failed:", error);
+            // Handle error, e.g., show a notification or alert
+            throw error; // Re-throw error to be handled by the component
+        },
+    });
+};
 export const useLogout = () => {
     const queryClient = useQueryClient();
     return useMutation<unknown, Error, void>({

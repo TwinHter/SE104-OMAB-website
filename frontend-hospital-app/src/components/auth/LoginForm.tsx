@@ -8,6 +8,7 @@ import {
     faUserTag,
     faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom"; // Import Link từ react-router-dom
 
 interface LoginFormProps {
     onLogin: (email: string, password: string, role: UserRole) => Promise<void>;
@@ -132,6 +133,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, isLoading, error }) => {
                     Lỗi: {error.message || "Có lỗi xảy ra."}
                 </p>
             )}
+
+            {/* Thêm đường dẫn đến trang đổi mật khẩu */}
+            <div className="text-center mt-4">
+                <Link
+                    to="/change-password"
+                    className="text-primary hover:underline text-sm"
+                >
+                    Quên mật khẩu? / Đổi mật khẩu
+                </Link>
+            </div>
         </form>
     );
 };
