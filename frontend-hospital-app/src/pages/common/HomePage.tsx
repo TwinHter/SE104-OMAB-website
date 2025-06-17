@@ -7,7 +7,9 @@ const HomePage: React.FC = () => {
     return (
         <div
             className="relative flex items-center justify-center min-h-screen bg-cover bg-center font-pt-sans"
-            style={{ backgroundImage: `url('/hero-bg.jpg')` }} // Đặt hình ảnh ở public hoặc import từ assets
+            style={{
+                backgroundImage: `url('https://media.istockphoto.com/id/1719538017/photo/home-care-healthcare-professional-hugging-senior-patient.jpg?s=612x612&w=0&k=20&c=DTQwVD1DTH0CMQ78aox8-cVKg8Nl-wCkSwY-S072M4E=')`,
+            }} // Đặt hình ảnh ở public hoặc import từ assets
         >
             <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
             {/* Lớp phủ tối */}
