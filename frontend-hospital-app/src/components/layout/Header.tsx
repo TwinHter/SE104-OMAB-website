@@ -153,7 +153,7 @@ const Header: React.FC = () => {
                                         icon={faUser}
                                         className="mr-1"
                                     />{" "}
-                                    {currentUser.name}
+                                    To Profile
                                 </Link>
                             </li>
                             <li>

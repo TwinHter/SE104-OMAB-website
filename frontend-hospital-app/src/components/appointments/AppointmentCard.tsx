@@ -14,6 +14,7 @@ import {
     faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../common/Button";
+import { useNavigate } from "react-router-dom";
 
 interface AppointmentCardProps {
     appointment: Appointment;
@@ -74,6 +75,11 @@ const AppointmentCard: React.FC<AppointmentCardProps> = ({
         : null;
 
     console.log("Appointment", appointment);
+    const navigate = useNavigate();
+    const handleMakePayment = () => {
+        // Chuyển hướng đến trang thanh toán, truyền ID lịch hẹn
+        navigate(`/payment/${appointment.id}`);
+    };
 
     const appointmentDate = new Date(appointment.date);
     const formattedDate = format(appointmentDate, "EEEE, dd/MM/yyyy", {
@@ -95,6 +101,9 @@ const AppointmentCard: React.FC<AppointmentCardProps> = ({
     const canComplete =
         isDoctor && appointment.status === AppointmentStatus.Scheduled;
     const canCancel = true;
+
+    const canPaid =
+        appointment.status === AppointmentStatus.Completed && !isDoctor;
 
     return (
         <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 flex flex-col font-pt-sans">
@@ -179,8 +188,6 @@ const AppointmentCard: React.FC<AppointmentCardProps> = ({
                         Hoàn thành
                     </Button>
                 )}
-
-                {/* Nút hủy hiển thị nếu onCancel được cung cấp và lịch hẹn chưa bị hủy/từ chối/hoàn thành */}
                 {canCancel && onCancel && (
                     <Button
                         variant="danger"
@@ -189,6 +196,16 @@ const AppointmentCard: React.FC<AppointmentCardProps> = ({
                         onClick={() => onCancel(appointment.id)}
                     >
                         Hủy lịch
+                    </Button>
+                )}
+                {canPaid && (
+                    <Button
+                        variant="success"
+                        size="sm"
+                        icon={faTimesCircle}
+                        onClick={handleMakePayment}
+                    >
+                        Thanh toán{" "}
                     </Button>
                 )}
             </div>

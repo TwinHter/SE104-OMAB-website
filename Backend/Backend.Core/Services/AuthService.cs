@@ -24,7 +24,6 @@ namespace Backend.Core.Services
             return user;
         }
 
-        // Đăng ký người dùng mới (không hash mật khẩu thực tế)
         public async Task<User> RegisterUser(string name, string email, string password, UserRole role)
         {
             var user = new User

@@ -23,6 +23,7 @@ import AdminDoctorManagementPage from "./pages/admin/AdminDoctorManagementPage";
 import NotFoundPage from "./pages/common/NotFoundPage";
 import DoctorReviewsPage from "./pages/doctors/DoctorReviewPage";
 import ChangePasswordPage from "./components/auth/ChangePasswordPage";
+import PaymentPage from "./components/appointments/PaymentPage";
 
 function AppContent() {
     return (
@@ -39,6 +40,10 @@ function AppContent() {
                         element={<ChangePasswordPage />}
                     />
                     <Route path="/doctors" element={<DoctorListPage />} />
+                    <Route
+                        path="/payment/:appointmentId"
+                        element={<PaymentPage />}
+                    />
 
                     {/* Protected Routes - Yêu cầu đăng nhập */}
                     <Route

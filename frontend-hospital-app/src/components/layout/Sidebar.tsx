@@ -58,7 +58,7 @@ const Sidebar: React.FC = () => {
         <aside className="w-64 bg-white p-6 shadow-lg rounded-lg h-full flex flex-col font-pt-sans">
             <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold text-primary-dark">
-                    {currentUser.name}
+                    Tóm tắt hồ sơ
                 </h2>
                 <p className="text-sm text-gray-500">{UserRole[role]}</p>
             </div>
