@@ -1,0 +1,6 @@
+@OMAB.Api_HostAddress = http://localhost:5049
+
+GET {{OMAB.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

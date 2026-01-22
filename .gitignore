@@ -1,0 +1,28 @@
+# === Node ===
+node_modules/
+dist/
+.env
+.vite/
+
+# === ASP.NET Core ===
+**/bin/
+**/obj/
+*.user
+*.vs/
+*.suo
+*.sln.docstates
+appsettings.Development.json
+appsettings.*.json
+secrets.json
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Logs ===
+*.log
+
+# === SQLite DB ===
+**/*.db
+**/*.db-wal
+**/*.db-shm
