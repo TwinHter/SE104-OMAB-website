@@ -18,7 +18,7 @@ public class Disease
 
     public void UpdateInfo(string name, string icd10Code)
     {
-        Name = name;
-        Icd10Code = icd10Code;
+        if (name != null) Name = name;
+        if (icd10Code != null) Icd10Code = icd10Code;
     }
 }
