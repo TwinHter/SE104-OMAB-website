@@ -27,15 +27,15 @@ builder.Services.AddScoped<IRelativeRepository, RelativeRepository>();
 builder.Services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
 
 // Register Services
-builder.Services.AddScoped<AuthService>(); // Simple auth service without JWT
+builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.AllowAnyOrigin()       // Cho phép mọi origin (http://..., https://..., etc)
-             .AllowAnyHeader()       // Cho phép mọi header
-             .AllowAnyMethod();      // Cho phép GET, POST, PUT, DELETE, etc.
+        policy.AllowAnyOrigin()
+             .AllowAnyHeader()
+             .AllowAnyMethod();
     });
 });
 var app = builder.Build();
@@ -45,8 +45,6 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
-    // Automatically apply migrations in development
     using (var scope = app.Services.CreateScope())
     {
         var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -55,11 +53,10 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    // Use custom error handling middleware in production
     app.UseErrorHandlingMiddleware();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 // No app.UseAuthentication() and app.UseAuthorization() needed for no-auth setup
 app.MapControllers();
