@@ -5,8 +5,9 @@ namespace OMAB.Domain.Entities;
 public class Doctor
 {
     private Doctor() { }
-    public Doctor(int experienceYears, decimal consultationFee, bool isActive = true) 
+    public Doctor(int id, int experienceYears, decimal consultationFee, bool isActive = true)
     {
+        UserId = id;
         ExperienceYears = experienceYears;
         ConsultationFee = consultationFee;
         IsActive = isActive;
@@ -42,5 +43,5 @@ public class Doctor
     public int AppointmentCount { get; private set; } = 0;
 
     public User User { get; private set; } = null!;
-    public ICollection<Specialty> Specialties { get; private set; } = new List<Specialty>();
+    public ICollection<DoctorSpecialty> DoctorSpecialties { get; private set; } = new List<DoctorSpecialty>();
 }

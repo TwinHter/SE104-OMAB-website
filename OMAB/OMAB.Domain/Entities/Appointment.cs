@@ -8,7 +8,7 @@ public class Appointment
 {
     private Appointment() { }
 
-    public Appointment(int patientId, int doctorId, int diseaseId, DateTime appointmentDate, decimal fee)
+    public Appointment(int patientId, int doctorId, int diseaseId, DateTime appointmentDate, decimal fee, string notes = "")
     {
         PatientId = patientId;
         DoctorId = doctorId;
@@ -17,6 +17,7 @@ public class Appointment
         Status = AppointmentStatus.Scheduled;
         Fee = fee;
         PaymentStatus = PaymentStatus.Unpaid;
+        Notes = notes;
     }
     public void UpdateAppointment(AppointmentStatus? status, decimal? fee, PaymentStatus? paymentStatus)
     {
@@ -34,6 +35,7 @@ public class Appointment
     public AppointmentStatus Status { get; private set; }
     public decimal Fee { get; private set; }
     public PaymentStatus PaymentStatus { get; private set; }
+    public string Notes { get; private set; } = "";
 
     public int? ReviewId { get; private set; }
     public Review? Review { get; private set; }
