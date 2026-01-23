@@ -7,7 +7,7 @@ public class User
 {
     private User() { }
 
-    public User(string email, string fullName, string passwordHash, Gender gender, UserRole userRole, DateTime dateOfBirth)
+    public User(string email, string fullName, string passwordHash, Gender gender, UserRole userRole, DateTime dateOfBirth, string phoneNumber)
     {
         Email = email;
         FullName = fullName;
@@ -15,6 +15,7 @@ public class User
         Gender = gender;
         UserRole = userRole;
         DateOfBirth = dateOfBirth;
+        PhoneNumber = phoneNumber;
         CreatedAt = DateTime.UtcNow;
     }
 
@@ -40,5 +41,9 @@ public class User
     public DateTime DateOfBirth { get; private set; }
     public Gender Gender { get; private set; } = Gender.Other;
     public UserRole UserRole { get; private set; } = UserRole.Patient;
+    public string PhoneNumber { get; private set; } = null!;
     public DateTime CreatedAt { get; private set; }
+
+    public Doctor? Doctor { get; private set; }
+    public Patient? Patient { get; private set; }
 }
