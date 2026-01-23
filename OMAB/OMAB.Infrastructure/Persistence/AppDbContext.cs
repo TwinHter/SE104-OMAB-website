@@ -1,6 +1,7 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using OMAB.Domain.Entities;
+using OMAB.Infrastructure.Persistence;
 
 namespace OMAB.Infrastructure.Persistence;
 
@@ -10,20 +11,19 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<User> Users { get; set; }
-    public DbSet<Doctor> Doctors { get; set; }
-    public DbSet<Patient> Patients { get; set; }
-    public DbSet<Specialty> Specialties { get; set; }
-    public DbSet<Appointment> Appointments { get; set; }
-    public DbSet<Disease> Diseases { get; set; }
-    public DbSet<Medicine> Medicines { get; set; }
-    public DbSet<Prescription> Prescriptions { get; set; }
-    public DbSet<Review> Reviews { get; set; }
+    public DbSet<User> Users => Set<User>();
+    public DbSet<Doctor> Doctors => Set<Doctor>();
+    public DbSet<Patient> Patients => Set<Patient>();
+    public DbSet<Specialty> Specialties => Set<Specialty>();
+    public DbSet<Appointment> Appointments => Set<Appointment>();
+    public DbSet<Disease> Diseases => Set<Disease>();
+    public DbSet<Medicine> Medicines => Set<Medicine>();
+    public DbSet<Prescription> Prescriptions => Set<Prescription>();
+    public DbSet<Review> Reviews => Set<Review>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }
