@@ -6,6 +6,6 @@ namespace OMAB.Application.Interfaces;
 
 public interface IUserRepository : IGenericRepository<User>
 {
-    Task<User?> GetByRoleAsync(UserRole role, CancellationToken ct = default);
+    Task<IEnumerable<User>> GetByRoleAsync(UserRole role, CancellationToken ct = default);
     Task<bool> EmailExistsAsync(string email, CancellationToken ct = default);
 }
