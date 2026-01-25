@@ -10,7 +10,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models/" />
+    <Folder Include="Cores/" />
+    <Folder Include="Features/Appointment/Commands/" />
+    <Folder Include="Features/Appointment/DTOs/" />
+    <Folder Include="Features/Appointment/Queries/" />
+    <Folder Include="Features/Identity/DTOs/" />
+    <Folder Include="Features/Identity/Queries/" />
   </ItemGroup>
 
   <PropertyGroup>
