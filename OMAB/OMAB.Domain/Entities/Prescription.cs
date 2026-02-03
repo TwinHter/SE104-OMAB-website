@@ -12,6 +12,11 @@ public class Prescription
         Dosage = dosage;
         Frequency = frequency;
     }
+    public void Update(string dosage, string frequency)
+    {
+        Dosage = dosage;
+        Frequency = frequency;
+    }
     public int Id { get; private set; }
     public int AppointmentId { get; private set; }
     public int MedicineId { get; private set; }

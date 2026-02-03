@@ -18,7 +18,8 @@ public class ReviewConfiguration : IEntityTypeConfiguration<Review>
         builder.Property(r => r.Comment).HasMaxLength(300);
         builder.Property(r => r.AppointmentId).IsRequired();
 
-        builder.HasOne<Appointment>().WithOne(a => a.Review)
+        builder.HasOne(r => r.Appointment)
+               .WithOne(a => a.Review)
                .HasForeignKey<Review>(r => r.AppointmentId)
                .OnDelete(DeleteBehavior.Cascade);
     }

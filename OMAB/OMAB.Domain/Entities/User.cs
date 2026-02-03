@@ -7,23 +7,25 @@ public class User
 {
     private User() { }
 
-    public User(string email, string fullName, string passwordHash, Gender gender, UserRole userRole, DateTime dateOfBirth, string phoneNumber)
+    public User(string email, string passwordHash, UserRole userRole)
     {
         Email = email;
-        FullName = fullName;
         PasswordHash = passwordHash;
-        Gender = gender;
         UserRole = userRole;
-        DateOfBirth = dateOfBirth;
-        PhoneNumber = phoneNumber;
         CreatedAt = DateTime.UtcNow;
     }
 
-    public void UpdateProfile(string? fullName, Gender? gender, DateTime? dateOfBirth)
+    public void UpdatePersonalInfo(string? fullName = null, Gender? gender = null, string? phoneNumber = null, DateTime? dateOfBirth = null)
     {
         if (fullName != null) FullName = fullName;
-        if (gender != null) Gender = gender.Value;
-        if (dateOfBirth != null) DateOfBirth = dateOfBirth.Value;
+        if (gender.HasValue) Gender = gender.Value;
+        if (phoneNumber != null) PhoneNumber = phoneNumber;
+        if (dateOfBirth.HasValue) DateOfBirth = dateOfBirth.Value;
+    }
+
+    public void ChangePassword(string newPasswordHash)
+    {
+        PasswordHash = newPasswordHash;
     }
 
     public int GetAge()

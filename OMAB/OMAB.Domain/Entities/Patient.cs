@@ -13,6 +13,12 @@ public class Patient
         DiseaseHistory = diseaseHistory;
         RelativePhoneNumber = relativePhoneNumber;
     }
+    public void UpdateMedicalInfo(BloodType? bloodType, string? diseaseHistory, string? relativePhoneNumber)
+    {
+        if (bloodType.HasValue) BloodType = bloodType.Value;
+        if (!string.IsNullOrWhiteSpace(diseaseHistory)) DiseaseHistory = diseaseHistory!;
+        if (!string.IsNullOrWhiteSpace(relativePhoneNumber)) RelativePhoneNumber = relativePhoneNumber!;
+    }
     public int UserId { get; set; }
     public BloodType BloodType { get; set; } = BloodType.Unknown;
     public string DiseaseHistory { get; set; } = "";
