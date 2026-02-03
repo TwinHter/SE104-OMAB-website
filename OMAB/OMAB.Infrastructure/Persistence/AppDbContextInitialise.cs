@@ -43,6 +43,7 @@ public class AppDbContextInitialise
             await SeedDiseasesAsync(cancellationToken);
             await SeedMedicinesAsync(cancellationToken);
             await SeedAppointmentsAsync(cancellationToken);
+            await SeedDoctorSchedulesAsync(cancellationToken);
 
             _logger.LogInformation("✅ Database seeding completed.");
         }
@@ -52,41 +53,14 @@ public class AppDbContextInitialise
             throw;
         }
     }
+
+    private async Task SeedDoctorSchedulesAsync(CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
     private async Task SeedUsersAsync(CancellationToken cancellationToken)
     {
-        if (await _context.Users.AnyAsync(cancellationToken)) return;
-        var admin = new User(
-            "admin@omab.com",
-            "System Admin",
-            SystemConstants.DefaultPassword,
-            Gender.Other,
-            UserRole.Admin,
-            new DateTime(2000, 1, 1),
-            "000-000-0000"
-        );
-
-        var doctorUser = new User(
-            "doctor@omab.com",
-            "Dr. John",
-            SystemConstants.DefaultPassword,
-            Gender.Male,
-            UserRole.Doctor,
-            new DateTime(1980, 5, 20),
-            "111-222-3333"
-        );
-
-        var patientUser = new User(
-            "patient@omab.com",
-            "Jane Patient",
-            SystemConstants.DefaultPassword,
-            Gender.Female,
-            UserRole.Patient,
-            new DateTime(1990, 7, 15),
-            "222-333-4444"
-        );
-
-        _context.Users.AddRange(admin, doctorUser, patientUser);
-        await _context.SaveChangesAsync(cancellationToken);
+        throw new NotImplementedException();
     }
     private async Task SeedSpecialtiesAsync(CancellationToken cancellationToken)
     {
