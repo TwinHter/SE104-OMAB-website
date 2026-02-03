@@ -6,16 +6,15 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="16.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="14.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Cores/" />
-    <Folder Include="Features/Appointment/Commands/" />
-    <Folder Include="Features/Appointment/DTOs/" />
-    <Folder Include="Features/Appointment/Queries/" />
-    <Folder Include="Features/Identity/DTOs/" />
-    <Folder Include="Features/Identity/Queries/" />
+    <Folder Include="Features/Catalog/" />
+    <Folder Include="Features/Catalog/Queries/" />
   </ItemGroup>
 
   <PropertyGroup>
